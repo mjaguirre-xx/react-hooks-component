@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { PeopleContext } from '../context/people'
 
-const ListNames = ({ people = [] }) => {
+const ListNames = () => {
+  const people = useContext(PeopleContext)
   return (
     <ul>
-      {people.map((person) => (
-        <li>{person?.name}</li>
-      ))}
+      {people.length > 0 ? (
+        people.map((person) => <li>{person?.name}</li>)
+      ) : (
+        <li>no data yet</li>
+      )}
     </ul>
   )
 }

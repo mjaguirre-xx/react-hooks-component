@@ -1,7 +1,9 @@
+import axios from 'axios'
+
 const API_URL = 'https://swapi.dev/api'
 
-const altFetch = async (url = '') =>
-  fetch(url).then((response) => response.json())
+const axiosGet = async (url = '') =>
+  axios.get(url).then((response) => response.data)
 
 export const getPeople = async (persons = 10) => {
   const NUMBER_OF_FETCH = Math.ceil(persons / 10)
@@ -9,11 +11,11 @@ export const getPeople = async (persons = 10) => {
 
   for (let i = 1; i <= NUMBER_OF_FETCH; i++) {
     if (i === 1) {
-      const responseData = await altFetch(`${API_URL}/people`)
+      const responseData = await axiosGet(`${API_URL}/people`)
 
       PEOPLE.push(...responseData.results)
     } else {
-      const responseData = await altFetch(`${API_URL}/people?page=${i}`)
+      const responseData = await axiosGet(`${API_URL}/people?page=${i}`)
       PEOPLE.push(...responseData.results)
     }
   }
@@ -22,6 +24,6 @@ export const getPeople = async (persons = 10) => {
 }
 
 export const getPerson = async (num = 1) => {
-  const responseData = await altFetch(`${API_URL}/people/${num}`)
+  const responseData = await axiosGet(`${API_URL}/people/${num}`)
   return responseData
 }
