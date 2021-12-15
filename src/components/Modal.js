@@ -57,15 +57,15 @@ function Modal(props) {
 		dispatch({ type: 'CLOSE_MODAL' });
 	};
 	return ReactDOM.createPortal(
-		<div className='fixed h-full top-0 w-full flex items-center justify-center modal-bg'>
-			<div className='modalContainer glass modalCard px-20 py-5 flex flex-col gap-4'>
-				<div className='text-center'>
-					<h1 className='text-lg font-bold'>
+		<div className='main-modal'>
+			<div className='inner-modal'>
+				<div className='state-header'>
+					<h1 className='inner-state-header'>
 						{state.status.toUpperCase()}
 					</h1>
 				</div>
 
-				<div className='flex gap-2'>
+				<div className='form form-fname'>
 					<label htmlFor='first_name'>First name:</label>
 					<input
 						type='text'
@@ -78,7 +78,7 @@ function Modal(props) {
 						}
 					/>
 				</div>
-				<div className='flex gap-2'>
+				<div className='form form-lname'>
 					<label htmlFor='last_name'>Last name:</label>
 					<input
 						type='text'
@@ -91,9 +91,9 @@ function Modal(props) {
 						}
 					/>
 				</div>
-				<div className='flex gap-2 justify-center'>
+				<div className='cancel-div'>
 					<button
-						className='text-white px-4 py-2 rounded-lg bg-red-700'
+						className='btn btn-cancel'
 						onClick={handleClose}
 					>
 						Cancel
@@ -103,7 +103,7 @@ function Modal(props) {
 							state.status === 'add'
 								? 'bg-blue-500'
 								: 'bg-green-500'
-						} text-white px-4 py-2 rounded-lg`}
+						} add-edit-btn`}
 						onClick={handleButton}
 					>
 						{state.status === 'add' ? (

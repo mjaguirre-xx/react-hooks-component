@@ -4,7 +4,7 @@ import { StatusContext } from '../context/StatusContextProvider';
 
 function List({ filter }) {
 	const [filteredNames, setFilteredNames] = useState([]);
-	const { state } = useContext(PeopleContext);
+	const { state, dispatch: peopleDispatch } = useContext(PeopleContext);
 	const { dispatch } = useContext(StatusContext);
 	useEffect(() => {
 		if (filter === '') {
@@ -18,18 +18,23 @@ function List({ filter }) {
 		}
 	}, [state.people, filter]);
 	
+	const handleDelete = (e, name) => {
+		e.preventDefault()
+		peopleDispatch({ type: 'DELETE_PERSON', payload: name })
+	};
+
 	const onSelect = (e, name) => {
 		e.preventDefault();
 		dispatch({ type: 'EDIT', payload: name });
 	};
 	return (
 		<div>
-			<ol className='flex flex-col items-center gap-2'>
+			<ol className='main-list-div'>
 				{state.loading ? (
 					<p>Loading....</p>
 				) : (
 					filteredNames.map((person) => (
-						<li className='flex gap-4 justify-between list-decimal'>
+						<li className='list-div'>
 							<div
 								onClick={(e) =>
 									onSelect(e, person.name)
@@ -39,8 +44,9 @@ function List({ filter }) {
 							</div>{' '}
 							<div>
 								<button
-									className='px-4 py-2 bg-red-500 text-white rounded-xl'
+									className='btn btn-delete'
 									onClick={(e) => {
+										handleDelete(e, person.name)
 									}}
 								>
 									Delete
@@ -51,7 +57,7 @@ function List({ filter }) {
 				)}
 			</ol>
 			{state.errorMsg && (
-				<h1 className='text-center text-lg text-red-500'>
+				<h1 className='error-message'>
 					{state.errorMsg}
 				</h1>
 			)}

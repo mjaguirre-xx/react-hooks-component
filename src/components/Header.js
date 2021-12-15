@@ -19,13 +19,13 @@ function Header({ filter, setFilter }) {
 		peopleDispatch({ type: 'INCREMENT_COUNT' });
 	};
 	return (
-		<div className='p-4 h-1/4 bg-gray-400 flex justify-center flex-col items-center'>
+		<div className='main-div'>
 			<div>
 				<h1>May the force be with you</h1>
 			</div>
-			<div className='flex gap-4 mt-2'>
+			<div className='innver-div'>
 				<button
-					className='px-4 py-2 bg-blue-500 text-white rounded-lg'
+					className='btn btn-main'
 					onClick={() => dispatch({ type: 'OPEN_MODAL' })}
 				>
 					{state.status === 'add' ? (
@@ -36,13 +36,13 @@ function Header({ filter, setFilter }) {
 				</button>
 				{modalState.openModal && <Modal />}
 				<button
-					className='px-4 py-2 bg-blue-500 text-white rounded-lg'
+					className='btn btn-fetch'
 					onClick={(e) => fetchOne(e)}
 				>
 					Fetch
 				</button>
 			</div>
-			<div className='flex gap-4 mt-2'>
+			<div className='search'>
 				<input
 					type='text'
 					value={filter}

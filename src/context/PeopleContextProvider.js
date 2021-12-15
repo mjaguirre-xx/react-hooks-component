@@ -3,7 +3,7 @@ import { getPeople } from '../apis/people'
 
 const initialState = {
 	people: [],
-	count: 31,
+	count: 11,
 	loading: false,
 	errorMsg: '',
 };
@@ -39,7 +39,13 @@ const reducer = (state, action) => {
 						: user;
 				}),
 			};
-
+		case 'DELETE_PERSON':
+			return {
+				...state,
+				people: state.people.filter(
+					(user) => user.name !== action.payload
+				),
+			};
 		case 'INCREMENT_COUNT':
 			return {
 				...state,
@@ -49,7 +55,7 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				loading: false,
-				errorMsg: 'Unable to connect to the server',
+				errorMsg: 'A long time ago in a galaxy far, far away...',
 			};
 		default:
 			return initialState;
