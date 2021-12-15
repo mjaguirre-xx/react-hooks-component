@@ -2,10 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
+import PeopleContextProvider from './context/PeopleContextProvider'
+import ModalContextProvider from './context/ModalContextProvider'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PeopleContextProvider>
+      <ModalContextProvider>
+        <App />
+      </ModalContextProvider>
+		</PeopleContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
