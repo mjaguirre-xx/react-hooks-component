@@ -40,7 +40,7 @@ function List({ filter }) {
 									onSelect(e, person.name)
 								}
 							>
-								<h1>{person.name}</h1>
+								<p>{person.name}</p>
 							</div>{' '}
 							<div>
 								<button

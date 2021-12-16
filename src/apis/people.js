@@ -9,12 +9,13 @@ export const getPeople = async (persons = 10) => {
   try {
     for (let i = 1; i <= NUMBER_OF_FETCH; i++) {
       if (i === 1) {
-        const responseData = await axios.get(`${API_URL}/people`)
-  
-        PEOPLE.push(...responseData.results)
+        const response = await axios.get(`${API_URL}/people`)
+        response.data.results.map((result) => PEOPLE.push(result))
+        // PEOPLE.push(...responseData.results)
       } else {
-        const responseData = await axios.get(`${API_URL}/people?page=${i}`)
-        PEOPLE.push(...responseData.results)
+        const response = await axios.get(`${API_URL}/people?page=${i}`)
+        response.data.results.map((result) => PEOPLE.push(result))
+        // PEOPLE.push(...responseData.results)
       }
     }  
   } catch (e) {

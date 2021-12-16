@@ -7,7 +7,7 @@ import { StatusContext } from '../context/StatusContextProvider';
 function Modal(props) {
 	const [name, setName] = useState({ first_name: '', last_name: '' });
 	const { state, dispatch: dispatchStatus } = useContext(StatusContext);
-	const { dispatch: peopledispatch } = useContext(PeopleContext);
+	const { dispatch: peopleDispatch } = useContext(PeopleContext);
 
 	const { dispatch } = useContext(ModalContext);
 	const whenSelected = (selected) => {
@@ -32,15 +32,14 @@ function Modal(props) {
 				last_name: 'robot',
 			});
 		} else if (state.status === 'add') {
-			peopledispatch({
+			peopleDispatch({
 				type: 'ADD_PERSON',
 				payload: { name: `${name.first_name} ${name.last_name}` },
 			});
 			setName({ first_name: '', last_name: '' });
 			dispatch({ type: 'CLOSE_MODAL' });
 		} else if (state.status === 'edit') {
-			// do this
-			peopledispatch({
+			peopleDispatch({
 				type: 'EDIT_PERSON',
 				name: state.selected,
 				payload: { name: `${name.first_name} ${name.last_name}` },
