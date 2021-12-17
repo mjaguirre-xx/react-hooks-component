@@ -28,8 +28,8 @@ function List({ filter }) {
 		dispatch({ type: 'EDIT', payload: name });
 	};
 	return (
-		<div>
-			<ol className='main-list-div'>
+		<div className='main-list-div'>
+			<ol>
 				{state.loading ? (
 					<p>Loading....</p>
 				) : (
@@ -40,18 +40,15 @@ function List({ filter }) {
 									onSelect(e, person.name)
 								}
 							>
-								<p>{person.name}</p>
-							</div>{' '}
-							<div>
-								<button
+								<p>{person.name}<button
 									className='btn btn-delete'
 									onClick={(e) => {
 										handleDelete(e, person.name)
 									}}
 								>
 									Delete
-								</button>
-							</div>
+								</button></p>
+							</div>{' '}
 						</li>
 					))
 				)}

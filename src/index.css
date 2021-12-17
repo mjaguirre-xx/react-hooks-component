@@ -7,3 +7,71 @@
 h1 {
   font-weight: 600;
 }
+
+body {
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  color: gold;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.btn-delete {
+  font-size: 9px;
+}
+
+.btn-cancel, .btn-modal {
+  font-size: 10px;
+}
+
+/* HEADER */
+.main-div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 20vh;
+  width: 50vw;
+
+  background-color: rgba(255, 255, 255, .15);  
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+}
+
+.search {
+  margin-top: 10px;
+}
+
+
+/* LIST */
+.main-list-div {
+
+  background-color: rgba(255, 255, 255, .15);  
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+}
+
+.list-div {
+  display: flex;
+  justify-content: center;
+}
+
+/* MODAL */
+.main-modal {
+  margin-left: 50px;
+  height: 20vh;
+  width: 20vw;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  background-color: rgba(255, 255, 255, .15);  
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+}

@@ -11,11 +11,9 @@ export const getPeople = async (persons = 10) => {
       if (i === 1) {
         const response = await axios.get(`${API_URL}/people`)
         response.data.results.map((result) => PEOPLE.push(result))
-        // PEOPLE.push(...responseData.results)
       } else {
         const response = await axios.get(`${API_URL}/people?page=${i}`)
         response.data.results.map((result) => PEOPLE.push(result))
-        // PEOPLE.push(...responseData.results)
       }
     }  
   } catch (e) {

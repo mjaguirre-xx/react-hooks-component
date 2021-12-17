@@ -106,9 +106,9 @@ function Modal(props) {
 						onClick={handleButton}
 					>
 						{state.status === 'add' ? (
-							<span>Add</span>
+							<span className='btn-modal'>Add</span>
 						) : (
-							<span>Edit</span>
+							<span className='btn-modal'>Edit</span>
 						)}
 					</button>
 				</div>

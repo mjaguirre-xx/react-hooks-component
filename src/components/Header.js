@@ -23,7 +23,7 @@ function Header({ filter, setFilter }) {
 			<div>
 				<h1>May the force be with you</h1>
 			</div>
-			<div className='innver-div'>
+			<div className='inner-div'>
 				<button
 					className='btn btn-main'
 					onClick={() => dispatch({ type: 'OPEN_MODAL' })}
